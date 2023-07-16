@@ -1,2 +1,24 @@
 # intro-vuex-fundamentals
-This is all about Vuex fundamentals.Learn about single source of truth by providing Vuex on any Vue apps. Understanding how actions,mutations,state works
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
