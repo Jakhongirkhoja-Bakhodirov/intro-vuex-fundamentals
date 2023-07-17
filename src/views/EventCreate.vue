@@ -47,7 +47,6 @@
 
 <script>
 import { v4 as uuidv4 } from 'uuid';
-import EventService from '@/services/EventService';
 export default {
   data() {
     return {
@@ -79,14 +78,7 @@ export default {
         id: uuidv4(),
         organizer: this.$store.state.user,
       };
-      EventService.postEvent(event)
-        .then(() => {
-          //add event to Vuex state
-          this.$store.commit('ADD_EVENT', event);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      this.$store.dispatch('createEvent', event);
     },
   },
 };
