@@ -41,6 +41,7 @@
 
       <button type="submit">Submit</button>
     </form>
+    <div>{{ this.$store.state.events }}</div>
   </div>
 </template>
 
@@ -73,11 +74,15 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.event.id = uuidv4();
-      this.event.organizer = this.$store.state.user;
-      EventService.postEvent(this.event)
+      const event = {
+        ...this.event,
+        id: uuidv4(),
+        organizer: this.$store.state.user,
+      };
+      EventService.postEvent(event)
         .then(() => {
           //add event to Vuex state
+          this.$store.commit('ADD_EVENT', event);
         })
         .catch((error) => {
           console.log(error);
