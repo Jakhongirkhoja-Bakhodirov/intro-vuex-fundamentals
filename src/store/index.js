@@ -20,7 +20,7 @@ export default createStore({
           commit('ADD_EVENT', event);
         })
         .catch((error) => {
-          console.log(error);
+          throw error;
         });
     },
     fetchEvents({ commit }) {
@@ -29,7 +29,7 @@ export default createStore({
           commit('SET_EVENTS', response.data);
         })
         .catch((error) => {
-          console.log(error);
+          throw error;
         });
     },
     fetchEvent({ commit, state }, id) {
@@ -45,7 +45,7 @@ export default createStore({
             commit('SET_EVENT', response.data);
           })
           .catch((error) => {
-            console.log(error);
+            throw error;
           });
       }
     },
