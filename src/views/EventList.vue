@@ -13,7 +13,12 @@ export default {
     EventCard,
   },
   created() {
-    this.$store.dispatch('fetchEvents');
+    this.$store.dispatch('fetchEvents').catch((error) => {
+      this.$router.push({
+        name: 'ErrorDisplay',
+        props: { error: error },
+      });
+    });
   },
   computed: {
     events() {
