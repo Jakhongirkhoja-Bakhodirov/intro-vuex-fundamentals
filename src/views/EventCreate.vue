@@ -85,7 +85,7 @@ export default {
         .catch((error) => {
           this.$router.push({
             name: 'ErrorDisplay',
-            props: { error: error },
+            params: { error: error },
           });
         });
     },

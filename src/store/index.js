@@ -15,7 +15,7 @@ export default createStore({
   },
   actions: {
     createEvent({ commit }, event) {
-      EventService.postEvent(event)
+      return EventService.postEvent(event)
         .then(() => {
           commit('ADD_EVENT', event);
         })
@@ -24,7 +24,7 @@ export default createStore({
         });
     },
     fetchEvents({ commit }) {
-      EventService.getEvents()
+      return EventService.getEvents()
         .then((response) => {
           commit('SET_EVENTS', response.data);
         })
@@ -33,14 +33,11 @@ export default createStore({
         });
     },
     fetchEvent({ commit, state }, id) {
-      console.log('events', state.events);
       const existingEvent = state.events.find((event) => event.id === id);
-      console.log('existingEvent', existingEvent, id);
       if (existingEvent) {
         commit('SET_EVENT', existingEvent);
       } else {
-        console.log('api call');
-        EventService.getEvent(id)
+        return EventService.getEvent(id)
           .then((response) => {
             commit('SET_EVENT', response.data);
           })
